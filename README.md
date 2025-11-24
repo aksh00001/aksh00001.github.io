@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Void Portfolio - 3D Creative Developer Portfolio
 
 A high-end, dark sci-fi portfolio website featuring a "Void Minimalist" aesthetic with interactive 3D elements.
@@ -49,3 +50,6 @@ You need to run both the backend server and the frontend development server.
 - **Glassmorphism UI**: Modern, translucent card designs.
 - **Dynamic Content**: Projects are fetched from the Express backend.
 - **Responsive Design**: Fully responsive layout using Tailwind CSS.
+=======
+# aksh00001.github.io
+>>>>>>> 484cea03b607ff53ec3e3171744ba18afa7a85a5
