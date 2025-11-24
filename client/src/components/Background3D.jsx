@@ -50,8 +50,8 @@ function SceneContent() {
             envMapIntensity: 1,
         });
 
-        // Reduce count by 30% for better performance
-        const count = window.innerWidth < 768 ? 56 : 105;
+        // Reduce count for optimal performance
+        const count = window.innerWidth < 768 ? 40 : 75;
 
         for (let i = 0; i < count; i++) {
             items.push({

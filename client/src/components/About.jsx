@@ -40,7 +40,7 @@ export default function About() {
 
                 {/* Name & Roles */}
                 <h3 className="text-3xl md:text-5xl font-bold text-white mb-2">
-                    Aksh
+                    Akshdeep Singh
                 </h3>
                 <p className="text-gray-400 text-sm md:text-lg font-medium mb-8 uppercase tracking-wider">
                     Cloud Developer • 3D Animator • Student
