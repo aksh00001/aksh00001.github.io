@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.mix-blend-exclusion {
+    mix-blend-mode: exclusion;
+}
+
+/* Gold Glow Effect for Active Project Card */
+.gold-glow {
+    border: 2px solid #FFD700;
+    /* Gold */
+    box-shadow: 0 0 50px rgba(255, 215, 0, 0.6), 0 0 20px rgba(255, 215, 0, 0.4) inset;
+    /* Stronger Glow */
+    z-index: 20;
+    position: relative;
+}
+
+/* Sparkle Animation */
+@keyframes sparkle-anim {
+
+    0%,
+    100% {
+        opacity: 0;
+        transform: scale(0.5) rotate(0deg);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2) rotate(180deg);
+    }
+}
+
+.gold-glow::before {
+    content: "✨";
+    position: absolute;
+    top: -25px;
+    right: -25px;
+    font-size: 2.5rem;
+    animation: sparkle-anim 2s infinite ease-in-out;
+    pointer-events: none;
+    text-shadow: 0 0 10px gold;
+}
+
+.gold-glow::after {
+    content: "✨";
+    position: absolute;
+    bottom: -25px;
+    left: -25px;
+    font-size: 2rem;
+    animation: sparkle-anim 2s infinite ease-in-out 1s;
+    /* Delay for async sparkle */
+    pointer-events: none;
+    text-shadow: 0 0 10px gold;
+}
+
+/* Text Shimmer Effect */
+@keyframes shimmer {
+    0% {
+        background-position: 200% 50%;
+    }
+
+    100% {
+        background-position: -200% 50%;
+    }
+}
+
+.text-shimmer {
+    background: linear-gradient(110deg,
+            #ffffff 0%,
+            #ffffff 40%,
+            #a855f7 50%,
+            #ffffff 60%,
+            #ffffff 100%);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+}
