@@ -102,3 +102,13 @@ body {
     background-clip: text;
     animation: shimmer 3s linear infinite;
 }
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 0%, 0% center;
+    }
+
+    100% {
+        background-position: 0% 0%, 200% center;
+    }
+}

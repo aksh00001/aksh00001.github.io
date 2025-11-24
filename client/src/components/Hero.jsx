@@ -44,7 +44,22 @@ export default function Hero() {
 
             {/* Headline - Metallic Gold */}
             <h1 className="hero-content text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-center mb-4 text-[#D4AF37]">
-                Hi, I'm Akshdeep Singh
+                Hi, I'm{' '}
+                <span
+                    className="relative inline-block cursor-default transition-transform duration-300 hover:scale-110"
+                    style={{
+                        backgroundImage: `linear-gradient(to right, #8A2BE2, #E879F9, #8A2BE2)`,
+                        backgroundSize: '200% auto',
+                        backgroundClip: 'text',
+                        WebkitBackgroundClip: 'text',
+                        color: 'transparent',
+                        WebkitTextFillColor: 'transparent',
+                        animation: 'gradientAnimation 3s linear infinite',
+                    }}
+                >
+                    Akshdeep Singh
+                </span>
+
             </h1>
 
             {/* Sub-heading - Metallic Gold */}
