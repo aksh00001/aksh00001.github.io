@@ -26,7 +26,7 @@ export default function Contact() {
             </div>
 
             <footer className="mt-20 text-xs text-gray-700">
-                &copy; 2025 Akshdeep. All rights reserved.
+                &copy; 2025 Aksh. All rights reserved.
             </footer>
         </section>
     );

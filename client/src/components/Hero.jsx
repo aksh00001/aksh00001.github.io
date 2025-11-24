@@ -23,7 +23,7 @@ export default function Hero() {
     return (
         <section ref={comp} className="h-screen flex flex-col justify-center items-center relative z-10 px-4">
             <h1 className="hero-text text-5xl md:text-7xl lg:text-9xl font-bold tracking-tighter text-white mb-4 text-center">
-                &gt;Akshdeep&lt;
+                &gt;Aksh&lt;
             </h1>
             <p className="hero-text text-lg md:text-2xl text-gray-400 tracking-widest uppercase text-center">
                 Creative Developer
