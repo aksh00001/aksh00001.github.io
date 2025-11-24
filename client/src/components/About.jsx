@@ -32,7 +32,7 @@ export default function About() {
                 About Me
             </h2>
 
-            <div className="about-card w-full max-w-4xl bg-[#1e293b]/80 backdrop-blur-md border border-slate-700 rounded-3xl p-8 md:p-12 text-center shadow-2xl relative overflow-hidden">
+            <div className="about-card w-full max-w-4xl bg-[#1e293b]/30 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 md:p-12 text-center shadow-2xl relative overflow-hidden">
                 {/* Profile Icon */}
                 <div className="w-24 h-24 md:w-32 md:h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-4xl md:text-5xl font-bold text-white shadow-lg">
                     A

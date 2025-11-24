@@ -54,7 +54,7 @@ export default function Hero() {
                         WebkitBackgroundClip: 'text',
                         color: 'transparent',
                         WebkitTextFillColor: 'transparent',
-                        animation: 'gradientAnimation 3s linear infinite',
+                        animation: 'gradientAnimation 2s linear infinite',
                     }}
                 >
                     Akshdeep Singh
