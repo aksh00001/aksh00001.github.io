@@ -60,7 +60,7 @@ function SceneContent() {
                 material: material,
                 position: [
                     (Math.random() - 0.5) * 30,
-                    (Math.random() - 0.5) * 50, // Increased vertical spread
+                    (Math.random() - 0.5) * 50,
                     (Math.random() - 0.5) * 15 - 5
                 ],
                 speed: Math.random() * 0.5 + 0.2
@@ -76,7 +76,8 @@ function SceneContent() {
             <pointLight position={[10, 10, 10]} intensity={1} color="#00ffff" />
             <pointLight position={[-10, -10, -10]} intensity={0.5} color="#ff00ff" />
 
-            <Stars radius={100} depth={50} count={15000} factor={4} saturation={0} fade speed={1} />
+            {/* Reduced star count */}
+            <Stars radius={100} depth={50} count={8000} factor={4} saturation={0} fade speed={1} />
 
             {shapes.map((shape) => (
                 <Geometry
