@@ -30,6 +30,10 @@ jobs:
           cd client
           npm run build
 
+      - name: Copy CNAME to dist
+        run: |
+          cp CNAME client/dist/CNAME
+
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
