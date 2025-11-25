@@ -7,11 +7,17 @@ export default {
     theme: {
         extend: {
             colors: {
-                background: '#050505',
-                surface: 'rgba(255, 255, 255, 0.05)',
-                primary: '#ffffff',
-                secondary: '#888888',
-                accent: '#00ffff', // Cyan for the "Void" feel
+                background: '#050205', // Almost Black (Subtle Purple Tint)
+                surface: '#150B1F',    // Dark Charcoal Purple
+                primary: '#FBE4D8',    // Champagne
+                secondary: '#DFB6B2',  // Rose Gold
+                accent: '#854F6C',     // Mauve
+                'theme-dark': '#050205',
+                'theme-purple': '#150B1F',
+                'theme-royal': '#522B5B',
+                'theme-mauve': '#854F6C',
+                'theme-rose': '#DFB6B2',
+                'theme-champagne': '#FBE4D8',
             },
             fontFamily: {
                 sans: ['Inter', 'sans-serif'],

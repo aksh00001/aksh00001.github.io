@@ -4,8 +4,9 @@ import Navbar from './components/Navbar';
 import LogoSplash from './components/LogoSplash';
 import Hero from './components/Hero';
 import Work from './components/Work';
+import AngledMarquee from './components/AngledMarquee';
 import About from './components/About';
-import Contact from './components/Contact';
+import AnimatedFooter from './components/AnimatedFooter';
 import Skills from './components/Skills';
 import { projects } from './data/projects';
 
@@ -18,7 +19,7 @@ function App() {
     };
 
     return (
-        <div className="relative w-full min-h-screen text-white font-sans selection:bg-accent selection:text-black bg-black">
+        <div className="relative w-full min-h-screen text-[#FBE4D8] font-sans selection:bg-[#DFB6B2] selection:text-[#050205] bg-[#050205]">
             {showSplash && <LogoSplash onComplete={handleSplashComplete} />}
 
             <Background3D />
@@ -29,8 +30,10 @@ function App() {
                 <About />
                 <Skills />
                 {!loading && <Work projects={projects} />}
-                <Contact />
+                <AngledMarquee />
             </main>
+
+            <AnimatedFooter />
         </div>
     );
 }

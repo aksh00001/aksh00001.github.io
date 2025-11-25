@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 body {
-    background-color: #000000;
-    color: #ffffff;
+    background-color: #050205;
+    color: #FBE4D8;
     overflow-x: hidden;
 }
 
@@ -14,16 +14,17 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-    background: #000000;
+    background: #050205;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #333;
+    background: #150B1F;
     border-radius: 4px;
+    border: 1px solid #522B5B;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: #522B5B;
 }
 
 .mix-blend-exclusion {
@@ -32,10 +33,9 @@ body {
 
 /* Gold Glow Effect for Active Project Card */
 .gold-glow {
-    border: 2px solid #FFD700;
-    /* Gold */
-    box-shadow: 0 0 50px rgba(255, 215, 0, 0.6), 0 0 20px rgba(255, 215, 0, 0.4) inset;
-    /* Stronger Glow */
+    border: 2px solid #DFB6B2;
+    /* Rose Gold */
+    box-shadow: 0 0 50px rgba(223, 182, 178, 0.6), 0 0 20px rgba(223, 182, 178, 0.4) inset;
     z-index: 20;
     position: relative;
 }
@@ -63,7 +63,7 @@ body {
     font-size: 2.5rem;
     animation: sparkle-anim 2s infinite ease-in-out;
     pointer-events: none;
-    text-shadow: 0 0 10px gold;
+    text-shadow: 0 0 10px #FBE4D8;
 }
 
 .gold-glow::after {
@@ -73,9 +73,8 @@ body {
     left: -25px;
     font-size: 2rem;
     animation: sparkle-anim 2s infinite ease-in-out 1s;
-    /* Delay for async sparkle */
     pointer-events: none;
-    text-shadow: 0 0 10px gold;
+    text-shadow: 0 0 10px #FBE4D8;
 }
 
 /* Text Shimmer Effect */
@@ -91,11 +90,11 @@ body {
 
 .text-shimmer {
     background: linear-gradient(110deg,
-            #ffffff 0%,
-            #ffffff 40%,
-            #a855f7 50%,
-            #ffffff 60%,
-            #ffffff 100%);
+            #FBE4D8 0%,
+            #FBE4D8 40%,
+            #854F6C 50%,
+            #FBE4D8 60%,
+            #FBE4D8 100%);
     background-size: 200% auto;
     color: transparent;
     -webkit-background-clip: text;
@@ -111,4 +110,87 @@ body {
     100% {
         background-position: 200% 50%;
     }
+}
+
+/* Animated Gradient Shift */
+@keyframes gradient-shift {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.animate-gradient-shift {
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease infinite;
+}
+
+/* Fog Pulse Animations with Color Play */
+@keyframes fog-pulse-1 {
+
+    0%,
+    100% {
+        transform: translate(-50%, 0) scale(1);
+        opacity: 0.6;
+        filter: hue-rotate(0deg);
+        /* Purple */
+    }
+
+    50% {
+        transform: translate(-50%, -20px) scale(1.05);
+        opacity: 0.5;
+        filter: hue-rotate(45deg);
+        /* Shifts to Pink */
+    }
+}
+
+@keyframes fog-pulse-2 {
+
+    0%,
+    100% {
+        transform: translate(-50%, 0) scale(1);
+        opacity: 0.5;
+        filter: hue-rotate(0deg);
+        /* Pink */
+    }
+
+    50% {
+        transform: translate(-50%, 10px) scale(1.1);
+        opacity: 0.4;
+        filter: hue-rotate(-45deg);
+        /* Shifts to Purple */
+    }
+}
+
+@keyframes fog-pulse-3 {
+
+    0%,
+    100% {
+        transform: translate(-50%, 0) scale(1);
+        opacity: 0.3;
+        filter: hue-rotate(0deg);
+    }
+
+    50% {
+        transform: translate(-50%, -10px) scale(1.15);
+        opacity: 0.2;
+        filter: hue-rotate(30deg);
+    }
+}
+
+.animate-fog-pulse-1 {
+    animation: fog-pulse-1 10s ease-in-out infinite;
+}
+
+.animate-fog-pulse-2 {
+    animation: fog-pulse-2 14s ease-in-out infinite;
+}
+
+.animate-fog-pulse-3 {
+    animation: fog-pulse-3 12s ease-in-out infinite;
 }
