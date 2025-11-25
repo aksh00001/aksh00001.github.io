@@ -4,6 +4,12 @@ import profileImage from '../assets/profile.jpg';
 
 export default function Hero() {
     const comp = useRef();
+    const [displayText, setDisplayText] = React.useState("");
+    const [roleIndex, setRoleIndex] = React.useState(0);
+    const [isDeleting, setIsDeleting] = React.useState(false);
+    const [trailText, setTrailText] = React.useState("");
+
+    const roles = ["Cloud Developer", "3D Animator"];
 
     useLayoutEffect(() => {
         let ctx = gsap.context(() => {
@@ -20,6 +26,37 @@ export default function Hero() {
 
         return () => ctx.revert();
     }, []);
+
+    React.useEffect(() => {
+        const currentRole = roles[roleIndex];
+        const typingSpeed = isDeleting ? 80 : 150; // Slower speeds
+        const pauseTime = isDeleting ? 0 : 2000;
+
+        const timer = setTimeout(() => {
+            if (!isDeleting && displayText === currentRole) {
+                // Pause before deleting
+                setTimeout(() => setIsDeleting(true), pauseTime);
+            } else if (isDeleting && displayText === "") {
+                // Move to next role
+                setIsDeleting(false);
+                setRoleIndex((prev) => (prev + 1) % roles.length);
+                setTrailText("");
+            } else if (isDeleting) {
+                // Delete character and set trail
+                const deletedChar = displayText[displayText.length - 1];
+                setTrailText(deletedChar);
+                setDisplayText(currentRole.substring(0, displayText.length - 1));
+                // Clear trail after a short delay
+                setTimeout(() => setTrailText(""), 200);
+            } else {
+                // Type character
+                setDisplayText(currentRole.substring(0, displayText.length + 1));
+                setTrailText("");
+            }
+        }, typingSpeed);
+
+        return () => clearTimeout(timer);
+    }, [displayText, isDeleting, roleIndex]);
 
     const scrollToSection = (selector) => {
         const element = document.querySelector(selector);
@@ -62,9 +99,11 @@ export default function Hero() {
 
             </h1>
 
-            {/* Sub-heading - Metallic Gold */}
-            <h2 className="hero-content text-xl md:text-3xl text-[#D4AF37] tracking-wide text-center mb-6 font-semibold">
-                Cloud Developer
+            {/* Sub-heading - Metallic Gold with Typewriter Effect */}
+            <h2 className="text-xl md:text-3xl text-[#D4AF37] tracking-wide text-center mb-6 font-semibold min-h-[2.5rem] md:min-h-[3rem]">
+                {displayText}
+                <span className="opacity-30 transition-opacity duration-200">{trailText}</span>
+                <span className="animate-pulse">|</span>
             </h2>
 
             {/* Bio - Warm Silver */}
