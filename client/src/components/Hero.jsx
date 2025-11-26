@@ -1,6 +1,7 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import profileImage from '../assets/profile.jpg';
+import GradientButton from './ui/gradient-button';
 
 export default function Hero() {
     const comp = useRef();
@@ -29,27 +30,22 @@ export default function Hero() {
 
     React.useEffect(() => {
         const currentRole = roles[roleIndex];
-        const typingSpeed = isDeleting ? 80 : 150; // Slower speeds
+        const typingSpeed = isDeleting ? 80 : 150;
         const pauseTime = isDeleting ? 0 : 2000;
 
         const timer = setTimeout(() => {
             if (!isDeleting && displayText === currentRole) {
-                // Pause before deleting
                 setTimeout(() => setIsDeleting(true), pauseTime);
             } else if (isDeleting && displayText === "") {
-                // Move to next role
                 setIsDeleting(false);
                 setRoleIndex((prev) => (prev + 1) % roles.length);
                 setTrailText("");
             } else if (isDeleting) {
-                // Delete character and set trail
                 const deletedChar = displayText[displayText.length - 1];
                 setTrailText(deletedChar);
                 setDisplayText(currentRole.substring(0, displayText.length - 1));
-                // Clear trail after a short delay
                 setTimeout(() => setTrailText(""), 200);
             } else {
-                // Type character
                 setDisplayText(currentRole.substring(0, displayText.length + 1));
                 setTrailText("");
             }
@@ -85,18 +81,18 @@ export default function Hero() {
                 <span
                     className="relative inline-block cursor-default transition-transform duration-300 hover:scale-110"
                     style={{
-                        backgroundImage: `linear-gradient(to right, #522B5B, #854F6C, #522B5B)`,
+                        backgroundImage: `linear-gradient(to right, #FBE4D8, #DFB6B2, #854F6C, #DFB6B2, #FBE4D8)`,
                         backgroundSize: '200% auto',
                         backgroundClip: 'text',
                         WebkitBackgroundClip: 'text',
                         color: 'transparent',
                         WebkitTextFillColor: 'transparent',
-                        animation: 'gradientAnimation 2s linear infinite',
+                        animation: 'gradientAnimation 5s linear infinite',
+                        filter: 'drop-shadow(0 0 15px rgba(223, 182, 178, 0.5))'
                     }}
                 >
                     Akshdeep Singh
                 </span>
-
             </h1>
 
             {/* Sub-heading - Rose Gold with Typewriter Effect */}
@@ -111,20 +107,14 @@ export default function Hero() {
                 Passionate about building scalable cloud solutions with <span className="text-[#DFB6B2] font-semibold">AWS</span> and creating immersive experiences as a <span className="text-[#DFB6B2] font-semibold">3D Animator</span>. I bring ideas to life through code and creativity.
             </p>
 
-            {/* Action Buttons - Mauve/Accent */}
+            {/* Action Buttons - Gradient Buttons */}
             <div className="hero-content flex flex-col sm:flex-row gap-4">
-                <button
-                    onClick={() => scrollToSection('.work-section')}
-                    className="px-8 py-3 bg-[#854F6C] text-[#FBE4D8] font-semibold rounded-lg hover:bg-[#522B5B] transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-[#854F6C]/50"
-                >
+                <GradientButton onClick={() => scrollToSection('.work-section')}>
                     View My Work
-                </button>
-                <button
-                    onClick={() => scrollToSection('.contact-section')}
-                    className="px-8 py-3 border-2 border-[#854F6C] text-[#854F6C] font-semibold rounded-lg hover:bg-[#854F6C] hover:text-[#FBE4D8] transform hover:scale-105 transition-all duration-300"
-                >
+                </GradientButton>
+                <GradientButton variant="variant" onClick={() => scrollToSection('.contact-section')}>
                     Get In Touch
-                </button>
+                </GradientButton>
             </div>
 
             {/* Scroll Indicator - Champagne (Muted) */}

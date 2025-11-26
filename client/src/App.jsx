@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Background3D from './components/Background3D';
+import ShaderDemo_ATC from './components/ui/atc-shader';
 import Navbar from './components/Navbar';
 import LogoSplash from './components/LogoSplash';
 import Hero from './components/Hero';
@@ -19,10 +19,10 @@ function App() {
     };
 
     return (
-        <div className="relative w-full min-h-screen text-[#FBE4D8] font-sans selection:bg-[#DFB6B2] selection:text-[#050205] bg-[#050205]">
+        <div className="relative w-full min-h-screen text-[#FBE4D8] font-sans selection:bg-[#DFB6B2] selection:text-[#050205]">
             {showSplash && <LogoSplash onComplete={handleSplashComplete} />}
 
-            <Background3D />
+            <ShaderDemo_ATC />
             <Navbar />
 
             <main className="relative z-10">

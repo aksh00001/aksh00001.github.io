@@ -1,174 +1,130 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import { HiHome, HiUser, HiCode, HiBriefcase } from 'react-icons/hi';
+import { cn } from '../lib/utils';
 
 gsap.registerPlugin(ScrollToPlugin);
 
+const navItems = [
+    { name: 'Home', section: '.hero-section', icon: HiHome },
+    { name: 'About', section: '.about-section', icon: HiUser },
+    { name: 'Skills', section: '.skills-section', icon: HiCode },
+    { name: 'Work', section: '.work-section', icon: HiBriefcase },
+];
+
 export default function Navbar() {
-    const [scrolled, setScrolled] = useState(false);
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [activeTab, setActiveTab] = useState(navItems[0].name);
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
         };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const scrollToSection = (id) => {
-        const element = document.querySelector(id);
+    const scrollToSection = (sectionId, itemName) => {
+        const element = document.querySelector(sectionId);
         if (element) {
-            // Calculate offset to center the section
             const elementTop = element.offsetTop;
             const elementHeight = element.offsetHeight;
             const windowHeight = window.innerHeight;
             const offset = elementTop - (windowHeight / 2) + (elementHeight / 2);
 
-            // Smooth scroll with GSAP - fast start, slow stop
             gsap.to(window, {
                 scrollTo: { y: offset, autoKill: false },
                 duration: 1.2,
-                ease: "power3.out", // Fast start, slow deceleration
+                ease: "power3.out",
             });
 
-            setMobileMenuOpen(false); // Close mobile menu after navigation
+            setActiveTab(itemName);
         }
     };
 
     return (
         <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-7xl px-4">
-            <div
-                className={`transition-all duration-300 rounded-full px-8 py-4 ${scrolled
-                    ? 'bg-[#150B1F]/80 backdrop-blur-xl border border-[#522B5B]/20 shadow-lg shadow-black/10'
-                    : 'bg-[#150B1F]/40 backdrop-blur-md border border-[#522B5B]/10'
-                    }`}
-                style={{
-                    backdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'blur(10px) saturate(150%)',
-                    WebkitBackdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'blur(10px) saturate(150%)'
-                }}
-            >
-                <div className="flex items-center justify-between gap-12">
-                    {/* Logo - Animated Gradient */}
-                    <button
-                        onClick={() => scrollToSection('.hero-section')}
-                        className="text-2xl font-bold tracking-tighter transition-all duration-300 hover:scale-105"
+            <div className="flex items-center justify-between gap-12 bg-[#150B1F]/80 border border-[#522B5B]/30 backdrop-blur-xl py-3 px-8 rounded-full shadow-lg shadow-black/20">
+                {/* Logo - Animated Gradient */}
+                <button
+                    onClick={() => scrollToSection('.hero-section', 'Home')}
+                    className="text-2xl font-bold tracking-tighter transition-all duration-300 hover:scale-105"
+                >
+                    <span
+                        style={{
+                            backgroundImage: 'linear-gradient(90deg, #FBE4D8, #DFB6B2, #854F6C, #FBE4D8)',
+                            backgroundSize: '200% 100%',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            backgroundClip: 'text',
+                            animation: 'gradientMove 3s ease infinite',
+                            display: 'inline-block'
+                        }}
                     >
-                        <span
-                            style={{
-                                backgroundImage: 'linear-gradient(90deg, #FBE4D8, #DFB6B2, #854F6C, #FBE4D8)',
-                                backgroundSize: '200% 100%',
-                                WebkitBackgroundClip: 'text',
-                                WebkitTextFillColor: 'transparent',
-                                backgroundClip: 'text',
-                                animation: 'gradientMove 3s ease infinite',
-                                display: 'inline-block'
-                            }}
-                        >
-                            aksh21h.me
-                        </span>
-                    </button>
+                        aksh21h.me
+                    </span>
+                </button>
 
-                    <style jsx>{`
-                        @keyframes gradientMove {
-                            0% {
-                                background-position: 0% 50%;
-                            }
-                            50% {
-                                background-position: 100% 50%;
-                            }
-                            100% {
-                                background-position: 0% 50%;
-                            }
+                <style jsx>{`
+                    @keyframes gradientMove {
+                        0% {
+                            background-position: 0% 50%;
                         }
-                    `}</style>
+                        50% {
+                            background-position: 100% 50%;
+                        }
+                        100% {
+                            background-position: 0% 50%;
+                        }
+                    }
+                `}</style>
 
-                    {/* Navigation Links - Champagne with Mauve hover */}
-                    <div className="hidden md:flex items-center space-x-8">
-                        <button
-                            onClick={() => scrollToSection('.about-section')}
-                            className="relative text-sm uppercase tracking-widest text-[#FBE4D8]/80 hover:text-[#DFB6B2] transition-all duration-300 hover:scale-110 group pb-1"
-                        >
-                            About
-                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#FBE4D8] shadow-[0_0_10px_rgba(251,228,216,0.8)] group-hover:w-1/2 transition-all duration-300"></span>
-                            <span className="absolute -bottom-1 right-0 w-0 h-0.5 bg-[#FBE4D8] shadow-[0_0_10px_rgba(251,228,216,0.8)] group-hover:w-1/2 transition-all duration-300"></span>
-                        </button>
-                        <button
-                            onClick={() => scrollToSection('.skills-section')}
-                            className="relative text-sm uppercase tracking-widest text-[#FBE4D8]/80 hover:text-[#DFB6B2] transition-all duration-300 hover:scale-110 group pb-1"
-                        >
-                            Skills
-                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#FBE4D8] shadow-[0_0_10px_rgba(251,228,216,0.8)] group-hover:w-1/2 transition-all duration-300"></span>
-                            <span className="absolute -bottom-1 right-0 w-0 h-0.5 bg-[#FBE4D8] shadow-[0_0_10px_rgba(251,228,216,0.8)] group-hover:w-1/2 transition-all duration-300"></span>
-                        </button>
-                        <button
-                            onClick={() => scrollToSection('.work-section')}
-                            className="relative text-sm uppercase tracking-widest text-[#FBE4D8]/80 hover:text-[#DFB6B2] transition-all duration-300 hover:scale-110 group pb-1"
-                        >
-                            Work
-                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#FBE4D8] shadow-[0_0_10px_rgba(251,228,216,0.8)] group-hover:w-1/2 transition-all duration-300"></span>
-                            <span className="absolute -bottom-1 right-0 w-0 h-0.5 bg-[#FBE4D8] shadow-[0_0_10px_rgba(251,228,216,0.8)] group-hover:w-1/2 transition-all duration-300"></span>
-                        </button>
-                        <button
-                            onClick={() => scrollToSection('.contact-section')}
-                            className="relative text-sm uppercase tracking-widest text-[#FBE4D8]/80 hover:text-[#DFB6B2] transition-all duration-300 hover:scale-110 group pb-1"
-                        >
-                            Contact
-                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#FBE4D8] shadow-[0_0_10px_rgba(251,228,216,0.8)] group-hover:w-1/2 transition-all duration-300"></span>
-                            <span className="absolute -bottom-1 right-0 w-0 h-0.5 bg-[#FBE4D8] shadow-[0_0_10px_rgba(251,228,216,0.8)] group-hover:w-1/2 transition-all duration-300"></span>
-                        </button>
-                    </div>
+                {/* Navigation Items with Tubelight */}
+                <div className="flex items-center gap-2">
+                    {navItems.map((item) => {
+                        const Icon = item.icon;
+                        const isActive = activeTab === item.name;
 
-                    {/* Mobile Menu Button */}
-                    <button
-                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                        className="md:hidden text-[#FBE4D8]"
-                    >
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
+                        return (
+                            <button
+                                key={item.name}
+                                onClick={() => scrollToSection(item.section, item.name)}
+                                className={cn(
+                                    "relative cursor-pointer text-sm font-semibold px-6 py-2.5 rounded-full transition-all duration-300",
+                                    "text-[#FBE4D8]/70 hover:text-[#FBE4D8]",
+                                    isActive && "text-[#FBE4D8]",
+                                )}
+                            >
+                                <span className="hidden md:inline uppercase tracking-wider">{item.name}</span>
+                                <span className="md:hidden">
+                                    <Icon size={20} />
+                                </span>
+                                {isActive && (
+                                    <motion.div
+                                        layoutId="lamp"
+                                        className="absolute inset-0 w-full bg-[#522B5B]/20 rounded-full -z-10"
+                                        initial={false}
+                                        transition={{
+                                            type: "spring",
+                                            stiffness: 300,
+                                            damping: 30,
+                                        }}
+                                    >
+                                        {/* Tubelight glow effect */}
+                                        <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-[#FBE4D8] rounded-t-full shadow-[0_0_20px_rgba(251,228,216,0.8)]">
+                                            <div className="absolute w-12 h-6 bg-[#FBE4D8]/30 rounded-full blur-md -top-2 -left-2" />
+                                            <div className="absolute w-8 h-6 bg-[#FBE4D8]/20 rounded-full blur-md -top-1" />
+                                            <div className="absolute w-4 h-4 bg-[#FBE4D8]/20 rounded-full blur-sm top-0 left-2" />
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </button>
+                        );
+                    })}
                 </div>
-
-                {/* Mobile Menu Dropdown */}
-                {mobileMenuOpen && (
-                    <div className="md:hidden mt-4 pt-4 border-t border-[#522B5B]/20">
-                        <div className="flex flex-col space-y-3">
-                            <button
-                                onClick={() => scrollToSection('.about-section')}
-                                className="relative text-sm uppercase tracking-widest text-[#FBE4D8]/80 hover:text-[#DFB6B2] transition-all duration-300 hover:scale-105 origin-left text-left group pb-1"
-                            >
-                                About
-                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#FBE4D8] shadow-[0_0_10px_rgba(251,228,216,0.8)] group-hover:w-1/2 transition-all duration-300"></span>
-                                <span className="absolute -bottom-1 right-0 w-0 h-0.5 bg-[#FBE4D8] shadow-[0_0_10px_rgba(251,228,216,0.8)] group-hover:w-1/2 transition-all duration-300"></span>
-                            </button>
-                            <button
-                                onClick={() => scrollToSection('.skills-section')}
-                                className="relative text-sm uppercase tracking-widest text-[#FBE4D8]/80 hover:text-[#DFB6B2] transition-all duration-300 hover:scale-105 origin-left text-left group pb-1"
-                            >
-                                Skills
-                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#FBE4D8] shadow-[0_0_10px_rgba(251,228,216,0.8)] group-hover:w-1/2 transition-all duration-300"></span>
-                                <span className="absolute -bottom-1 right-0 w-0 h-0.5 bg-[#FBE4D8] shadow-[0_0_10px_rgba(251,228,216,0.8)] group-hover:w-1/2 transition-all duration-300"></span>
-                            </button>
-                            <button
-                                onClick={() => scrollToSection('.work-section')}
-                                className="relative text-sm uppercase tracking-widest text-[#FBE4D8]/80 hover:text-[#DFB6B2] transition-all duration-300 hover:scale-105 origin-left text-left group pb-1"
-                            >
-                                Work
-                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#FBE4D8] shadow-[0_0_10px_rgba(251,228,216,0.8)] group-hover:w-1/2 transition-all duration-300"></span>
-                                <span className="absolute -bottom-1 right-0 w-0 h-0.5 bg-[#FBE4D8] shadow-[0_0_10px_rgba(251,228,216,0.8)] group-hover:w-1/2 transition-all duration-300"></span>
-                            </button>
-                            <button
-                                onClick={() => scrollToSection('.contact-section')}
-                                className="relative text-sm uppercase tracking-widest text-[#FBE4D8]/80 hover:text-[#DFB6B2] transition-all duration-300 hover:scale-105 origin-left text-left group pb-1"
-                            >
-                                Contact
-                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#FBE4D8] shadow-[0_0_10px_rgba(251,228,216,0.8)] group-hover:w-1/2 transition-all duration-300"></span>
-                                <span className="absolute -bottom-1 right-0 w-0 h-0.5 bg-[#FBE4D8] shadow-[0_0_10px_rgba(251,228,216,0.8)] group-hover:w-1/2 transition-all duration-300"></span>
-                            </button>
-                        </div>
-                    </div>
-                )}
             </div>
         </nav>
     );

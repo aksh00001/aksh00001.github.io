@@ -27,10 +27,7 @@ export default function AnimatedFooter() {
                 }}
             ></div>
 
-            {/* Large Quote Marks */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none">
-                <span className="text-[400px] font-serif text-white leading-none">"</span>
-            </div>
+
 
             {/* Footer Content */}
             <div className="relative z-10 h-full flex flex-col justify-end p-8 md:p-12">
