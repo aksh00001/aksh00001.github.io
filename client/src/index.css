@@ -392,3 +392,15 @@ body {
 .animate-fog-pulse-3 {
     animation: fog-pulse-3 12s ease-in-out infinite;
 }
+/* Disable all animations in night mode */
+.no-animations *,
+.no-animations *::before,
+.no-animations *::after {
+    animation-play-state: paused !important;
+    animation: none !important;
+    transition: none !important;
+}
+
+.no-animations canvas {
+    opacity: 0.3 !important;
+}

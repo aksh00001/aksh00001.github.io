@@ -4,6 +4,8 @@ import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { HiHome, HiUser, HiCode, HiBriefcase } from 'react-icons/hi';
 import { cn } from '../lib/utils';
+import SkyToggle from './ui/sky-toggle';
+import { useTheme } from '../context/ThemeContext';
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -17,6 +19,7 @@ const navItems = [
 export default function Navbar() {
     const [activeTab, setActiveTab] = useState(navItems[0].name);
     const [isMobile, setIsMobile] = useState(false);
+    const { isDayMode, toggleTheme } = useTheme();
 
     useEffect(() => {
         const handleResize = () => {
@@ -47,11 +50,11 @@ export default function Navbar() {
 
     return (
         <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-7xl px-4">
-            <div className="flex items-center justify-between gap-12 bg-[#150B1F]/80 border border-[#522B5B]/30 backdrop-blur-xl py-3 px-8 rounded-full shadow-lg shadow-black/20">
+            <div className="flex items-center justify-between gap-12 bg-[#150B1F]/40 border border-[#FBE4D8]/10 backdrop-blur-2xl py-3 px-8 rounded-full shadow-2xl shadow-[#522B5B]/20 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-[#FBE4D8]/5 before:via-transparent before:to-[#854F6C]/5 before:rounded-full">
                 {/* Logo - Animated Gradient */}
                 <button
                     onClick={() => scrollToSection('.hero-section', 'Home')}
-                    className="text-2xl font-bold tracking-tighter transition-all duration-300 hover:scale-105"
+                    className="relative z-10 text-2xl font-bold tracking-tighter transition-all duration-300 hover:scale-105"
                 >
                     <span
                         style={{
@@ -83,7 +86,7 @@ export default function Navbar() {
                 `}</style>
 
                 {/* Navigation Items with Tubelight */}
-                <div className="flex items-center gap-2">
+                <div className="relative z-10 flex items-center gap-2">
                     {navItems.map((item) => {
                         const Icon = item.icon;
                         const isActive = activeTab === item.name;
@@ -124,6 +127,11 @@ export default function Navbar() {
                             </button>
                         );
                     })}
+                </div>
+
+                {/* Day/Night Toggle */}
+                <div className="relative z-10">
+                    <SkyToggle checked={!isDayMode} onChange={toggleTheme} />
                 </div>
             </div>
         </nav>

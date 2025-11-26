@@ -8,6 +8,7 @@ export default function FullscreenExpansion() {
     const sectionRef = useRef();
     const wrapperRef = useRef();
     const centerImageRef = useRef();
+    const headingRef = useRef();
 
     const images = [
         'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop',
@@ -44,7 +45,14 @@ export default function FullscreenExpansion() {
                 .to(wrapperRef.current, {
                     opacity: 0,
                     duration: 0.5,
-                }, 0.5);
+                }, 0.5)
+                // Fade in "Featured Projects" heading
+                .to(headingRef.current, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    ease: "power2.out"
+                }, 0.8);
 
         }, sectionRef);
 
@@ -53,6 +61,30 @@ export default function FullscreenExpansion() {
 
     return (
         <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center bg-[#0a0a0a] overflow-hidden">
+            {/* Featured Projects Heading - Initially hidden */}
+            <div
+                ref={headingRef}
+                className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none"
+                style={{ opacity: 0, transform: 'translateY(30px)' }}
+            >
+                <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold text-[#FBE4D8] tracking-tight">
+                    <span
+                        className="inline-block"
+                        style={{
+                            backgroundImage: 'linear-gradient(to right, #FBE4D8, #DFB6B2, #854F6C, #DFB6B2, #FBE4D8)',
+                            backgroundSize: '200% auto',
+                            backgroundClip: 'text',
+                            WebkitBackgroundClip: 'text',
+                            color: 'transparent',
+                            WebkitTextFillColor: 'transparent',
+                            filter: 'drop-shadow(0 0 30px rgba(251, 228, 216, 0.3))'
+                        }}
+                    >
+                        Featured Projects
+                    </span>
+                </h2>
+            </div>
+
             <div ref={wrapperRef} className="w-full max-w-7xl px-4 md:px-8">
                 <div className="grid grid-cols-3 gap-4 md:gap-6">
                     {images.map((img, index) => (
