@@ -1,6 +1,6 @@
 import { memo, useCallback, useEffect, useRef } from "react";
 import { cn } from "../../lib/utils";
-import { animate } from "framer-motion";
+import { animate } from "motion/react";
 
 const GlowingEffect = memo(
     ({
@@ -13,7 +13,7 @@ const GlowingEffect = memo(
         className,
         movementDuration = 2,
         borderWidth = 1,
-        disabled = false,
+        disabled = true,
     }) => {
         const containerRef = useRef(null);
         const lastPosition = useRef({ x: 0, y: 0 });
@@ -115,21 +115,22 @@ const GlowingEffect = memo(
                 />
                 <div
                     ref={containerRef}
-                    style={{
-                        "--blur": `${blur}px`,
-                        "--spread": spread,
-                        "--start": "0",
-                        "--active": "0",
-                        "--glowingeffect-border-width": `${borderWidth}px`,
-                        "--repeating-conic-gradient-times": "5",
-                        "--gradient":
-                            variant === "white"
-                                ? `repeating-conic-gradient(
+                    style={
+                        {
+                            "--blur": `${blur}px`,
+                            "--spread": spread,
+                            "--start": "0",
+                            "--active": "0",
+                            "--glowingeffect-border-width": `${borderWidth}px`,
+                            "--repeating-conic-gradient-times": "5",
+                            "--gradient":
+                                variant === "white"
+                                    ? `repeating-conic-gradient(
                   from 236.84deg at 50% 50%,
                   var(--black),
                   var(--black) calc(25% / var(--repeating-conic-gradient-times))
                 )`
-                                : `radial-gradient(circle, #FBE4D8 10%, #FBE4D800 20%),
+                                    : `radial-gradient(circle, #FBE4D8 10%, #FBE4D800 20%),
                 radial-gradient(circle at 40% 40%, #DFB6B2 5%, #DFB6B200 15%),
                 radial-gradient(circle at 60% 60%, #854F6C 10%, #854F6C00 20%), 
                 radial-gradient(circle at 40% 60%, #522B5B 10%, #522B5B00 20%),
@@ -141,7 +142,8 @@ const GlowingEffect = memo(
                   #522B5B calc(75% / var(--repeating-conic-gradient-times)),
                   #FBE4D8 calc(100% / var(--repeating-conic-gradient-times))
                 )`,
-                    }}
+                        }
+                    }
                     className={cn(
                         "pointer-events-none absolute inset-0 rounded-[inherit] opacity-100 transition-opacity",
                         glow && "opacity-100",
