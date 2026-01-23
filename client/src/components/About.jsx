@@ -120,7 +120,7 @@ export default function About() {
             icon: <Award className="size-4 text-[#DFB6B2]" />,
             title: "AWS Certified",
             description: "Cloud Solutions Architect",
-            date: "2024",
+            date: "2026",
             iconClassName: "text-[#854F6C]",
             titleClassName: "text-[#FBE4D8]",
             className: "[grid-area:stack] hover:-translate-y-10 before:absolute before:w-[100%] before:outline-1 before:rounded-xl before:outline-[#522B5B]/30 before:h-[100%] before:content-[''] before:bg-blend-overlay before:bg-[#050205]/50 grayscale-[100%] hover:before:opacity-0 before:transition-opacity before:duration-700 hover:grayscale-0 before:left-0 before:top-0",
