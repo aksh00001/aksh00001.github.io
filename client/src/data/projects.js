@@ -1,30 +1,38 @@
 export const projects = [
     {
         id: 1,
-        title: "Nebula OS",
-        description: "A web-based operating system concept with spatial navigation.",
-        tech: ["React", "Three.js", "WebGL"],
-        image: "https://placehold.co/600x400/000000/FFF"
+        title: "Mark4-Bot",
+        description: "Tactical Windows Remote Management Bot with System Telemetry, UMS Automation, and Gemini AI integration.",
+        tech: ["Python", "Gemini AI", "Windows API", "UMS Automation", "Telegram API"],
+        image: "https://placehold.co/600x400/050110/FBE4D8",
+        github: "https://github.com/aksh00001/Mark4-Bot",
+        link: "https://github.com/aksh00001/Mark4-Bot"
     },
     {
         id: 2,
-        title: "Cyber Finance",
-        description: "DeFi dashboard visualization with real-time data streams.",
-        tech: ["Vue", "D3.js", "Socket.io"],
-        image: "https://placehold.co/600x400/111111/FFF"
+        title: "CPU Scheduler",
+        description: "An advanced implementation of energy-efficient CPU scheduling algorithms focused on power optimization and core allocation.",
+        tech: ["C++", "OS Architecture", "Optimization"],
+        image: "/cpu_scheduler_preview_1772267471236.png",
+        github: "https://github.com/aksh00001/Energy-Efficient-CPU-Scheduling-Algorithm",
+        link: "https://github.com/aksh00001/Energy-Efficient-CPU-Scheduling-Algorithm"
     },
     {
         id: 3,
-        title: "Void Messenger",
-        description: "Encrypted communication platform with ephemeral messages.",
-        tech: ["Node.js", "WebRTC", "Redis"],
-        image: "https://placehold.co/600x400/222222/FFF"
+        title: "Nexus Shooter",
+        description: "A high-performance browser-based space shooter featuring vibrant nebulae, particle systems, and kinetic gameplay.",
+        tech: ["JavaScript", "Vite", "Canvas API", "GLSL"],
+        image: "/space_shooter_preview_1772267486028.png",
+        github: "https://github.com/aksh00001/space-shooter-game",
+        link: "https://aksh00001.github.io/space-shooter-game/"
     },
     {
         id: 4,
-        title: "Aero Sim",
-        description: "Flight dynamics simulation engine for browser environments.",
-        tech: ["Rust", "WASM", "Canvas API"],
-        image: "https://placehold.co/600x400/333333/FFF"
+        title: "Blender Motion",
+        description: "Cinematic 3D animation and modeling project exploring humanoid robotics and cyberpunk environmental lighting.",
+        tech: ["Blender", "PowerShell", "Rendering", "3D Modeling"],
+        image: "https://placehold.co/600x400/050110/FBE4D8?text=Blender+Motion",
+        github: "https://github.com/aksh00001/blender-animation",
+        link: "https://github.com/aksh00001/blender-animation"
     }
 ];

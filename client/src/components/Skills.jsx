@@ -151,12 +151,6 @@ export default function Skills() {
                     </div>
                 </div>
             </div>
-
-            <style jsx>{`
-                .hover\\:pause-animation:hover {
-                    animation-play-state: paused !important;
-                }
-            `}</style>
         </section>
     );
 }

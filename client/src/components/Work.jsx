@@ -113,16 +113,37 @@ export default function Work({ projects }) {
                                                 ))}
                                             </div>
 
-                                            <div className="pt-6">
-                                                <button className="px-10 py-4 bg-[#854F6C] text-[#FBE4D8] font-bold text-lg rounded-full hover:bg-[#522B5B] transform hover:scale-105 transition-all duration-300 shadow-xl">
-                                                    View Project →
-                                                </button>
+                                            <div className="pt-8 flex gap-4">
+                                                <a
+                                                    href={project.link}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="px-8 py-3 bg-[#DFB6B2] text-[#050205] font-bold text-sm rounded-full hover:bg-[#FBE4D8] transform hover:scale-105 transition-all duration-300 shadow-xl tracking-widest uppercase"
+                                                >
+                                                    Live Demo
+                                                </a>
+                                                <a
+                                                    href={project.github}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="px-8 py-3 bg-transparent border border-[#DFB6B2]/40 text-[#DFB6B2] font-bold text-sm rounded-full hover:border-[#FBE4D8] hover:text-[#FBE4D8] transform hover:scale-105 transition-all duration-300 shadow-xl tracking-widest uppercase"
+                                                >
+                                                    GitHub
+                                                </a>
                                             </div>
                                         </div>
 
-                                        {/* Right: Image/Visual */}
+                                        {/* Right: Visual Section */}
                                         <div className="flex items-center justify-center">
-                                            <div className="relative w-full h-full min-h-[350px] rounded-2xl overflow-hidden bg-[#1a1a2e] border border-white/20 shadow-2xl transform hover:scale-[1.02] transition-transform duration-500">
+                                            <div
+                                                className={`relative w-full max-w-[600px] aspect-[3/2] rounded-2xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-500 border border-[#FBE4D8]/10
+                                                    ${project.title === 'Mark4-Bot' ? 'animate-terminal-pulse' : ''}
+                                                    `}
+                                                style={{
+                                                    background: `rgba(21, 11, 31, 0.4)`,
+                                                    backdropFilter: 'blur(10px)',
+                                                }}
+                                            >
                                                 {project.image ? (
                                                     <img
                                                         src={project.image}
@@ -133,15 +154,20 @@ export default function Work({ projects }) {
                                                     <div className="w-full h-full flex items-center justify-center">
                                                         <div className="text-center p-8">
                                                             <div className="text-7xl mb-6">🚀</div>
-                                                            <p className="text-white/60 text-xl">
-                                                                {project.title}
+                                                            <p className="text-white/40 text-sm font-mono tracking-widest uppercase">
+                                                                Project System Online
                                                             </p>
                                                         </div>
                                                     </div>
                                                 )}
 
-                                                {/* Decorative gradient overlay */}
-                                                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
+                                                {/* Decorative Overlay */}
+                                                <div className="absolute inset-0 bg-gradient-to-t from-[#150B1F]/80 to-transparent pointer-events-none"></div>
+
+                                                {/* Scanline Effect for Mark4 */}
+                                                {project.title === 'Mark4-Bot' && (
+                                                    <div className="absolute inset-0 bg-[linear-gradient(transparent_0%,rgba(223,182,178,0.05)_50%,transparent_100%)] bg-[length:100%_4px] animate-scanline pointer-events-none" />
+                                                )}
                                             </div>
                                         </div>
                                     </div>

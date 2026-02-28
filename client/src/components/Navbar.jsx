@@ -71,20 +71,6 @@ export default function Navbar() {
                     </span>
                 </button>
 
-                <style jsx>{`
-                    @keyframes gradientMove {
-                        0% {
-                            background-position: 0% 50%;
-                        }
-                        50% {
-                            background-position: 100% 50%;
-                        }
-                        100% {
-                            background-position: 0% 50%;
-                        }
-                    }
-                `}</style>
-
                 {/* Navigation Items with Tubelight */}
                 <div className="relative z-10 flex items-center gap-2">
                     {navItems.map((item) => {

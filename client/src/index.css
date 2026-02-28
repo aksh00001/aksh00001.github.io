@@ -392,6 +392,40 @@ body {
 .animate-fog-pulse-3 {
     animation: fog-pulse-3 12s ease-in-out infinite;
 }
+
+/* Navbar logo gradient animation */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Terminal Pulse Effect for Mark4-Bot */
+@keyframes terminal-pulse {
+    0%, 100% { 
+        box-shadow: 0 0 20px rgba(82, 43, 91, 0.2), 0 0 0 1px rgba(223, 182, 178, 0.1);
+        border-color: rgba(223, 182, 178, 0.1);
+    }
+    50% { 
+        box-shadow: 0 0 40px rgba(82, 43, 91, 0.4), 0 0 0 2px rgba(223, 182, 178, 0.3);
+        border-color: rgba(223, 182, 178, 0.3);
+    }
+}
+
+.animate-terminal-pulse {
+    animation: terminal-pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Scanline Effect */
+@keyframes scanline {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(100%); }
+}
+
+.animate-scanline {
+    animation: scanline 8s linear infinite;
+}
+
 /* Disable all animations in night mode */
 .no-animations *,
 .no-animations *::before,
