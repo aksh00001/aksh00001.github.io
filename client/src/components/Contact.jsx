@@ -139,7 +139,7 @@ export default function Contact() {
                 const triageLabel = TRIAGE_OPTIONS.find(o => o.id === form.triage)?.label || '';
                 const subject = encodeURIComponent(`[${triageLabel}] from ${form.name}`);
                 const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\nTriage: ${triageLabel}\n\nMessage:\n${form.message}`);
-                window.open(`mailto:hello@aksh21h.me?subject=${subject}&body=${body}`, '_self');
+                window.open(`mailto:aksh969696@gmail.com?subject=${subject}&body=${body}`, '_self');
 
                 addLog('SUCCESS', 'Local Relay triggered.');
                 setSent(true);
@@ -148,15 +148,20 @@ export default function Contact() {
             }
         } finally {
             setSending(false);
-            setTimeout(() => {
-                if (sent) {
-                    setSent(false);
-                    setForm({ name: '', email: '', message: '', triage: '' });
-                    addLog('SYSTEM', 'Terminal reset. Ready for next mission.');
-                }
-            }, 4000);
         }
     };
+
+    // Reset form after successful send
+    useEffect(() => {
+        if (!sent) return;
+        const timer = setTimeout(() => {
+            setSent(false);
+            setForm({ name: '', email: '', message: '', triage: '' });
+            setErrors({});
+            addLog('SYSTEM', 'Terminal reset. Ready for next mission.');
+        }, 4000);
+        return () => clearTimeout(timer);
+    }, [sent, addLog]);
 
     const inputClass = (field) =>
         `w-full bg-[#150B1F]/40 border ${errors[field] ? 'border-[#ef4444]/40' : 'border-[#FBE4D8]/5'} rounded-xl px-5 py-3.5 text-[#FBE4D8] text-sm font-mono placeholder-[#FBE4D8]/15 focus:outline-none focus:border-[#DFB6B2]/30 focus:bg-[#150B1F]/60 transition-all duration-300`;
@@ -207,27 +212,31 @@ export default function Contact() {
                                 Reporting a design emergency? Or just want to discuss the next big thing? My sensors are always active.
                             </p>
 
-                            <a href="mailto:hello@aksh21h.me" className="inline-block text-2xl md:text-3xl font-light text-[#FBE4D8] hover:text-[#DFB6B2] transition-colors duration-300 break-all underline decoration-[#DFB6B2]/20 underline-offset-8">
-                                hello@aksh21h.me
+                            <a href="mailto:aksh969696@gmail.com" className="inline-block text-2xl md:text-3xl font-light text-[#FBE4D8] hover:text-[#DFB6B2] transition-colors duration-300 break-all underline decoration-[#DFB6B2]/20 underline-offset-8">
+                                aksh969696@gmail.com
                             </a>
                         </div>
 
                         <div className="grid grid-cols-2 gap-4">
                             {[
                                 { name: 'GitHub', url: 'https://github.com/aksh00001' },
-                                { name: 'LinkedIn', url: 'https://linkedin.com/in/akshdeep-singh-6b3534241' },
-                                { name: 'Twitter', url: 'https://twitter.com/aksh21h' },
-                                { name: 'Instagram', url: 'https://instagram.com/aksh21h' }
+                                { name: 'LinkedIn', url: 'https://www.linkedin.com/in/akshdeep-singh-652155355' },
+                                { name: 'Phone', url: 'tel:+917206969059', label: '+91 7206969059' },
+                                { name: 'Instagram', url: 'https://www.instagram.com/akshhhhhh.hh?igsh=MTVlMnV1dm5qZ3g5Zg==' }
                             ].map((social) => (
                                 <a
                                     key={social.name}
                                     href={social.url}
-                                    target="_blank"
+                                    target={social.name === 'Phone' ? '_self' : '_blank'}
                                     rel="noopener noreferrer"
                                     className="p-6 rounded-2xl border border-[#FBE4D8]/5 bg-[#FBE4D8]/[0.01] hover:bg-[#FBE4D8]/[0.05] hover:border-[#DFB6B2]/30 transition-all duration-300 group"
                                 >
-                                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#FBE4D8]/30 group-hover:text-[#DFB6B2] block mb-2 transition-colors">External_Link</span>
-                                    <span className="text-[#FBE4D8] font-bold tracking-wider">{social.name}</span>
+                                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#FBE4D8]/30 group-hover:text-[#DFB6B2] block mb-2 transition-colors">
+                                        {social.name === 'Phone' ? 'Direct_Uplink' : 'External_Link'}
+                                    </span>
+                                    <span className="text-[#FBE4D8] font-bold tracking-wider">
+                                        {social.label || social.name}
+                                    </span>
                                 </a>
                             ))}
                         </div>
