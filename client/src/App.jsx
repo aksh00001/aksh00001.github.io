@@ -11,14 +11,11 @@ import Skills from './components/Skills';
 import { ZoomParallax } from './components/ui/zoom-parallax';
 import { projects } from './data/projects';
 import { useTheme } from './context/ThemeContext';
-import AICommandCenter from './components/ui/AICommandCenter';
-import AICommsHub from './components/ui/AICommsHub';
 import Contact from './components/Contact';
 
 function App() {
     const [loading, setLoading] = useState(false);
     const [showSplash, setShowSplash] = useState(true);
-    const [hubOpen, setHubOpen] = useState(false);
     const { isDayMode } = useTheme();
 
     const handleSplashComplete = () => {
@@ -74,8 +71,6 @@ function App() {
             </main>
 
             <AnimatedFooter />
-            <AICommandCenter onLaunchHub={() => setHubOpen(true)} />
-            <AICommsHub isOpen={hubOpen} onClose={() => setHubOpen(false)} />
         </div>
     );
 }
