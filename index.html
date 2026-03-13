@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nice Try! 😂</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #0f172a;
+            color: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+        }
+        .container {
+            background: rgba(30, 41, 59, 0.7);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+            max-width: 600px;
+            animation: float 4s ease-in-out infinite;
+        }
+        h1 {
+            color: #ef4444;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            color: #cbd5e1;
+        }
+        .highlight {
+            color: #3b82f6;
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 10px 20px;
+            background: #3b82f6;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #2563eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚨 THIEF DETECTED 🚨</h1>
+        <p>Oh, so you thought you could just `git clone` my hard work?</p>
+        <p class="highlight">Did it hurt when you fell from heaven to steal my code?</p>
+        <p>I may not have given you my source code, but you clearly have a source of audacity. The real components are locked up safe in a private repo. 🔒</p>
+        <p>But hey, since you made the effort to run `npm install` and `npm run dev`...</p>
+        <p><i>"Are you a keyboard? Because you're just my type."</i></p>
+        <a href="https://aksh21h.me" class="btn">Return to the real site</a>
+    </div>
+</body>
+</html>
