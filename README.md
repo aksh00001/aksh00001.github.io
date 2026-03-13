@@ -1,9 +1,11 @@
 # aksh21h.me — Portfolio Website
 
-🌐 **Live at:** [aksh21h.me](https://aksh21h.me)
+Welcome to my portfolio source code! 🚀
 
-Personal portfolio website built with React, Vite, and Framer Motion.
+Wait... looking for the actual components? 
+Gotcha! The real code is locked up safely. 🔒
 
----
+But hey, while you're here:
+*Are you a Wi-Fi signal? Because I'm feeling a strong connection.*
 
-*Source code is maintained privately.*
+Enjoy the compiled site at [aksh21h.me](https://aksh21h.me) 😉
