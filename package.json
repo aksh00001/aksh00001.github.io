@@ -1,0 +1,18 @@
+{
+  "name": "aksh21h-portfolio-secret-code",
+  "version": "6.9.0",
+  "description": "Are you a magician? Because whenever I look at this code, everyone else disappears.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "echo 'Did it hurt when you fell from heaven to steal my code?'",
+    "build": "echo 'If you were a transforming variable, you'd be a fine-apple.'",
+    "start": "echo 'Are you a parking ticket? Because you have FINE written all over you.'"
+  },
+  "author": "Akshdeep Singh",
+  "license": "ISC",
+  "dependencies": {
+    "react-rizz": "^1.0.0",
+    "pickup-lines": "^6.9.0",
+    "humor-sense": "infinite"
+  }
+}
