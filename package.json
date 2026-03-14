@@ -3,8 +3,10 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "description": "A modern, interactive portfolio website built with React and Three.js, featuring stunning 3D graphics and smooth animations. This project showcases my work, skills, and experience with a beautiful, responsive design.",
+  "main": "trick.js",
   "scripts": {
-    "dev": "vite",
+    "dev": "node trick.js",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -14,5 +16,13 @@
   },
   "devDependencies": {
     "vite": "^5.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aksh00001/aksh00001.github.io.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aksh00001/aksh00001.github.io/issues"
+  },
+  "homepage": "https://github.com/aksh00001/aksh00001.github.io#readme"
 }
