@@ -6,7 +6,7 @@
   "description": "A modern, interactive portfolio website built with React and Three.js, featuring stunning 3D graphics and smooth animations. This project showcases my work, skills, and experience with a beautiful, responsive design.",
   "main": "index.html",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --open",
     "build": "vite build",
     "preview": "vite preview"
   },
