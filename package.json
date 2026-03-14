@@ -4,9 +4,9 @@
   "version": "1.0.0",
   "type": "module",
   "description": "A modern, interactive portfolio website built with React and Three.js, featuring stunning 3D graphics and smooth animations. This project showcases my work, skills, and experience with a beautiful, responsive design.",
-  "main": "trick.js",
+  "main": "index.html",
   "scripts": {
-    "dev": "node trick.js",
+    "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
